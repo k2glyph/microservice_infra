@@ -1,0 +1,4 @@
+---
+- name: Leave the Swarm cluster
+  shell: docker swarm leave -f
+  ignore_errors: true
