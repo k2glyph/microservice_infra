@@ -40,4 +40,13 @@
     groups: docker
     append: yes
   become: yes
-
+- name: Enabled Docker service to survive reboot
+  service:
+    name: docker
+    enabled: yes
+  become: yes
+- name: Start Docker service
+  service:
+    name: docker
+    state: started
+  become: yes
