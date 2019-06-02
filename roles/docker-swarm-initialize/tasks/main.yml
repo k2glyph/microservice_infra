@@ -6,7 +6,7 @@
   tags: swarm
 - name: Initialize Docker swarm
   shell: > 
-          docker swarm init --advertise-addr={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:2377
+          docker swarm init --advertise-addr=192.168.56.2:2377
   when: swarm_status.rc !=0
   run_once: true
   tags: swarm

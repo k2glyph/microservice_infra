@@ -1,0 +1,5 @@
+---
+- name: Add Worker to the swarm cluster
+  shell: "docker swarm join --token {{ hostvars['manager1']['manager_token']['stdout'] }} 192.168.56.2:2377"
+  ignore_errors: true
+  tags: swarm

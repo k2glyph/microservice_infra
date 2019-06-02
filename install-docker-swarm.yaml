@@ -18,7 +18,12 @@
   hosts: managers
   roles:
     - docker-swarm-initialize
-# - name: add workers to the swarm
-#   hosts: workers
-#   roles:
-#     - docker-swarm-add-worker
+- name: Add manager to the swarm cluster
+  hosts: managers
+  roles:
+    - docker-swarm-add-manager
+    
+- name: Add worker to the swarm cluster
+  hosts: workers
+  roles:
+    - docker-swarm-add-worker
