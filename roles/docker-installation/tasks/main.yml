@@ -1,0 +1,43 @@
+---
+- name: Install Docker Dependencies
+  yum: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+  tags: docker
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- name: Add Docker repo
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+  become: yes
+  
+
+- name: Enable Docker Test & Edge repo
+  ini_file:
+    dest: /etc/yum.repos.d/docker-ce.repo
+    section: "{{ item }}"
+    option: enabled
+    value: 0
+  with_items:
+    - docker-ce-edge
+    - docker-ce-test
+  become: yes
+
+- name: Install Docker
+  package:
+    name: docker-ce
+    state: latest
+  become: yes
+
+- name: Add User vagrant to docker group
+  user: 
+    name: vagrant
+    groups: docker
+    append: yes
+  become: yes
+

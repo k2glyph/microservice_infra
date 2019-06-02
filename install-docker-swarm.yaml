@@ -1,0 +1,24 @@
+# - name: setup docker user on the nodes
+#   become: yes
+#   become_user: vagrant
+#   hosts: all
+#   roles:
+#     - configure-admin
+# - name: copy public key to nodes
+#   become: yes
+#   become_user: vagrant
+#   hosts: docker-nodes
+#   roles:
+#     - copy-keys
+- name: install docker
+  hosts: all
+  roles:
+    - docker-installation
+# - name: initialize docker swarm
+#   hosts: managers
+#   roles:
+#     - docker-swarm-init
+# - name: add workers to the swarm
+#   hosts: workers
+#   roles:
+#     - docker-swarm-add-worker

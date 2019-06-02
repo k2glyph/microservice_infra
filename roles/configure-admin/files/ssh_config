@@ -1,0 +1,15 @@
+Host manager
+  Hostname manager
+  User docker
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+Host worker1
+  Hostname worker1
+  User docker
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+Host worker2
+  Hostname worker2
+  User docker
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
