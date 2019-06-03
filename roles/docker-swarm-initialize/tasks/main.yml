@@ -4,6 +4,7 @@
   register: swarm_status
   ignore_errors: true
   tags: swarm
+  
 - name: Initialize Docker swarm
   shell: > 
           docker swarm init --advertise-addr=192.168.56.2:2377

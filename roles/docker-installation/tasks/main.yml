@@ -6,6 +6,7 @@
     - device-mapper-persistent-data
     - lvm2
   tags: docker
+  ignore_errors: yes
   become: yes
   become_user: root
   become_method: sudo
@@ -29,6 +30,7 @@
   become: yes
 
 - name: Install Docker
+  ignore_errors: yes
   package:
     name: docker-ce
     state: latest

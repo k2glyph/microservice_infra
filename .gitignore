@@ -1,2 +1,4 @@
 **/old/**
 **.retry
+.vagrant/
+public.txt
