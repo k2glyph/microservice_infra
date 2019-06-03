@@ -2,3 +2,4 @@
 **.retry
 .vagrant/
 public.txt
+customer-backend/
