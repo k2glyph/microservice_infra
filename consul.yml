@@ -1,0 +1,18 @@
+- name: Install consul In Docker Swarm
+  hosts: managers[0]
+  roles:
+    - consul-server-install
+ - hosts: managers
+   become: yes
+   become_user: root
+   roles:
+    - role: consul
+      consul_servers_group: managers
+      
+ - hosts: workers
+   become: yes
+   become_user: root
+   roles:
+    - role: consul
+      consul_servers_group: managers
+      consul_mode: agent
