@@ -1,9 +1,5 @@
-- name: Common
+
+- name: install docker
   hosts: all
   roles:
-    - common
-
-# - name: install docker
-#   hosts: all
-#   roles:
-#     - docker-installation
+    - docker-installation

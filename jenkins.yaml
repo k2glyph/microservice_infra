@@ -1,5 +1,18 @@
 ---
 - name: Install Jenkins
   hosts: managers[0]
+  vars:
+    jenkins_install_via: "docker"
+    jenkins_config_owner: "vagrant"
+    jenkins_config_group: "vagrant"
+    jenkins_port: "10080" 
+    jenkins_plugins:
+      - git
   roles:
-      - { role: ansible_role-jenkins_docker_base }
+    - emmetog.jenkins
+  become: yes
+  become_user: root
+  become_method: sudo
+
+        # - docker_users: ["docker", "vagrant"]
+    # - jenkins_port: 10080

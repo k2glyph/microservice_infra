@@ -1,0 +1,5 @@
+---
+- name: Instal Visualizer
+  hosts: managers
+  tasks:
+    - name: 
