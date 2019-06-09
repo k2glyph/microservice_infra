@@ -1,16 +1,4 @@
 ---
-- name: Install Docker Dependencies
-  yum: name={{ item }} state=latest update_cache=yes
-  with_items:
-    - yum-utils
-    - device-mapper-persistent-data
-    - lvm2
-  tags: docker
-  ignore_errors: yes
-  become: yes
-  become_user: root
-  become_method: sudo
-
 - name: Add Docker repo
   get_url:
     url: https://download.docker.com/linux/centos/docker-ce.repo

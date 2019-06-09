@@ -1,0 +1,20 @@
+---
+- name: Install epel
+  yum: name=epel-release state=latest
+  ignore_errors: yes
+  become: yes
+  become_user: root
+  become_method: sudo
+  
+- name: Install Dependencies
+  yum: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+    - python-pip
+  tags: docker
+  ignore_errors: yes
+  become: yes
+  become_user: root
+  become_method: sudo

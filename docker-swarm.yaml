@@ -10,10 +10,6 @@
 #   hosts: docker-nodes
 #   roles:
 #     - copy-keys
-- name: install docker
-  hosts: all
-  roles:
-    - docker-installation
 - name: Initialize Docker Swarm
   hosts: managers
   roles:
