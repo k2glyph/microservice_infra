@@ -1,0 +1,5 @@
+---
+- name: Install Jenkins
+  hosts: managers[0]
+  roles:
+      - { role: ansible_role-jenkins_docker_base }
