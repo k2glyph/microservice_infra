@@ -2,12 +2,72 @@
 - name: Install Jenkins
   hosts: managers[0]
   vars:
+    jenkins_version: "2.164.3"
     jenkins_install_via: "docker"
     jenkins_config_owner: "vagrant"
     jenkins_config_group: "vagrant"
     jenkins_port: "10080" 
     jenkins_plugins:
+      # Organization and Administration
+      - dashboard-view
+      - cloudbees-folder
+      - antisamy-markup-formatter
+      # Build Features
+      - build-name-setter
+      - build-timeout
+      - config-file-provider
+      - credentials-binding
+      - embeddable-build-status
+      - rebuild
+      - ssh-agent
+      - throttle-concurrents
+      - timestamper
+      - ws-cleanup
+      # Build Analysis and Reporting  
+      - checkstyle
+      - cobertura
+      - htmlpublisher
+      - junit
+      - warnings
+      - xunit
+      # Pipelines and Continuous Deliver
+      - workflow-aggregator
+      - github-organization-folder
+      - pipeline-stage-view
+      - build-pipeline-plugin
+      - conditional-buildstep
+      - jenkins-multijob-plugin
+      - parameterized-trigger
+      - copyartifact
+      # Source Code Management
+      - bitbucket
+      - clearcase
+      - cvs
       - git
+      - git-parameter
+      - github
+      - gitlab-plugin
+      - p4
+      - repo
+      - subversion
+      - teamconcert
+      - tfs
+      # Distributed Builds
+      - matrix-project
+      - ssh-slaves
+      - windows-slaves
+      # User Management and Security
+      - matrix-auth
+      - pam-auth
+      - ldap
+      - role-strategy
+      - active-directory
+      # Notifications and Publishing
+      - email-ext
+      - emailext-template
+      - mailer
+      - publish-over-ssh
+      - ssh
   roles:
     - emmetog.jenkins
   become: yes
