@@ -1,0 +1,14 @@
+---
+- name: Copy kong.yml to remote
+  copy:
+    src: ./files/kong.yaml
+    dest: ~/kong.yaml
+    owner: vagrant
+    group: vagrant
+
+- name: Deploy kong from compose
+  docker_stack:
+    state: present
+    name: Kong
+    compose:
+    -   ~/kong.yaml

@@ -1,0 +1,5 @@
+---
+- name: Deploy kong from compose
+  hosts: managers
+  roles:
+    - kong

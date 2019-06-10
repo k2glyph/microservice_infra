@@ -29,6 +29,7 @@
   pip: name={{ item }} state=latest
   with_items:
     - docker-compose
+    - jsondiff
   become: yes
   become_user: root
   become_method: sudo

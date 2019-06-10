@@ -1,0 +1,5 @@
+---
+- name: Install Visualizer
+  hosts: managers
+  roles:
+    - visualizer
