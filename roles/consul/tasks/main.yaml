@@ -1,0 +1,19 @@
+---
+- name: Copy consul.yml to remote
+  copy:
+    src: ./docker-compose/consul/consul.yaml
+    dest: ~/consul.yaml
+    owner: vagrant
+    group: vagrant
+- name: Copy config.json to remote
+  copy:
+    src: ./docker-compose/consul/config.json
+    dest: ~/config.json
+    owner: vagrant
+    group: vagrant
+- name: Deploy Consul from compose
+  docker_stack:
+    state: present
+    name: Consul
+    compose:
+    -   ~/consul.yaml

@@ -1,27 +1,33 @@
-- name: Consul in Manager
-  hosts: managers
-  become: yes
-  become_user: root
-  roles:
-  - { role: consul, consul_servers_group: "managers" }
-- hosts: workers
-  become: yes
-  become_user: root
-  roles:
-  - { role: consul, consul_servers_group: managers, consul_mode: agent}
+# - name: Consul in Manager
+#   hosts: managers
+#   become: yes
+#   become_user: root
+#   roles:
+#   - { role: consul, consul_servers_group: "managers" }
+# - hosts: workers
+#   become: yes
+#   become_user: root
+#   roles:
+#   - { role: consul, consul_servers_group: managers, consul_mode: agent}
 
-- hosts: managers[0]
-  become: yes
-  become_user: root
-  tasks:
-    - name: Start registrator globally and connect to consul cluster
-      shell: >
-        docker service create \
-          --name registrator \
-          --mount type=bind,target=/tmp/docker.sock,src=/var/run/docker.sock \
-          --network appnet \
-          --mode global \
-          gliderlabs/registrator:latest \
-          consul://{{ hostvars[inventory_hostname]['ansible_docker0']['ipv4']['address'] }}:8500
-      tags:
-        - registrator
+# - hosts: managers[0]
+#   become: yes
+#   become_user: root
+#   tasks:
+#     - name: Start registrator globally and connect to consul cluster
+#       shell: >
+#         docker service create \
+#           --name registrator \
+#           --mount type=bind,target=/tmp/docker.sock,src=/var/run/docker.sock \
+#           --network appnet \
+#           --mode global \
+#           gliderlabs/registrator:latest \
+#           consul://{{ hostvars[inventory_hostname]['ansible_docker0']['ipv4']['address'] }}:8500
+#       tags:
+#         - registrator
+
+---
+- name: Deploy Consul from compose
+  hosts: managers
+  roles:
+    - consul

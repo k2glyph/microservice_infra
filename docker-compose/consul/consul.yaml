@@ -1,0 +1,35 @@
+---
+version: '3.3'
+
+networks:
+  consul-network:
+
+services:
+  server:
+    image: consul:latest
+    networks:
+      consul-network:
+        aliases:
+          - consul.server
+    command: "consul agent -config-file /consul/config/config.json"
+    ports:
+      - target: 8500
+        published: 8500
+        mode: host
+    volumes:
+      - /home/vagrant:/consul/config
+    deploy:
+      mode: replicated
+      replicas: 1
+      endpoint_mode: dnsrr
+      update_config:
+        parallelism: 1
+        failure_action: rollback
+        delay: 30s
+      restart_policy:
+        condition: any
+        delay: 5s
+        window: 120s
+      placement:
+        constraints:
+          - node.role == manager

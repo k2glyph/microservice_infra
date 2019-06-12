@@ -1,7 +1,7 @@
 ---
 - name: Copy kong.yml to remote
   copy:
-    src: ./files/kong_new.yaml
+    src: ./docker-compose/kong/kong_new.yaml
     dest: ~/kong.yaml
     owner: vagrant
     group: vagrant

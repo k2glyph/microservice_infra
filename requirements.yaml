@@ -1,5 +1,2 @@
-# from galaxy
-# - src: git+https://github.com/k2glyph/ansible-role-jenkins
-#   version: master
 - src: emmetog.jenkins
   version: master
