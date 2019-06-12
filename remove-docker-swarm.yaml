@@ -1,12 +1,13 @@
 ---
+
 - name: Remove worker from swarm cluster
-  hosts: worker2
+  hosts: "{{ node }}"
   roles:
     - docker-swarm-remove
 - name: Remove worker or manager from manager swarm cluster
   hosts: managers
   roles:
-  - { role: docker-swarm-delete, host: 'worker2' }
+  - { role: docker-swarm-delete, host: "{{ node }}" }
 
 # - name: Remove manager from swarm cluster
 #   hosts: managers
