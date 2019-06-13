@@ -1,5 +1,5 @@
 Managers=1
-Workers=1
+Workers=2
 
 Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
       m.vm.hostname = "manager#{m_id}"
       m.vm.network "private_network", ip: "192.168.56.#{m_id+1}"
       config.vm.provider "virtualbox" do |v|
-        v.memory = 1024
+        v.memory = 2048
         v.cpus = 2
       end
     end

@@ -1,5 +1,6 @@
 #!/bin/bash
-for i in manager1 worker1 worker2 worker3; 
+for i in $@; 
 do 
+    echo "Adding public key in $i"
     cat public.txt | vagrant ssh $i -c "cat >> ~/.ssh/authorized_keys"
 done;
