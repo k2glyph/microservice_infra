@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
         w.vm.hostname = "worker#{w_id}"
         w.vm.network "private_network", ip: "192.168.56.#{4+w_id}"
         config.vm.provider "virtualbox" do |v|
-          v.memory = 1024
+          v.memory = 2048
           v.cpus = 2
         end
       end

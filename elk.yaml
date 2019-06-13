@@ -1,0 +1,5 @@
+---
+- name: Install ELK in docker swarm
+  hosts: managers
+  roles:
+    - elk

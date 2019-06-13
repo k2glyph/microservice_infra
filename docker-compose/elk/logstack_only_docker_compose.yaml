@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  logstash:
+      image: logstash:latest
+      volumes:
+        - /home/vagrant:/usr/share/logstash/pipeline/
+      deploy:
+        mode: replicated
+        replicas: 1

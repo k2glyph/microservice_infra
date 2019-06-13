@@ -1,0 +1,14 @@
+---
+- name: Copy docker-compose.yml to remote
+  copy:
+    src: ./docker-compose/elk
+    dest: ~/
+    owner: vagrant
+    group: vagrant
+
+- name: Deploy elk from compose
+  docker_stack:
+    state: present
+    name: elk
+    compose:
+    -   ~/elk/logstash/docker-compose.yml
