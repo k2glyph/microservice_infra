@@ -25,6 +25,13 @@
   become_method: sudo
   ignore_errors: true
 
+- name: Upgrade pip from pip
+  command: pip install --upgrade pip
+  become: yes
+  become_user: root
+  become_method: sudo
+  ignore_errors: true
+
 - name: Install Dependencies from pip
   pip: name={{ item }} state=latest
   with_items:
